@@ -8,25 +8,25 @@
 
     <div class="card-body">
       <div class="shop-items">
-        <% @shoes_data.each do |shoe_data| %>
+        <% @shoes.each do |shoe| %>
           <div class="shop-item">
             <div 
               class="shop-item-image"
-              style="background-color: <%= shoe_data["color"] %>;">
-              <%= image_tag(shoe_data["image"]) %>
+              style="background-color: <%= shoe.color %>;">
+              <%= image_tag(shoe["image"]) %>
             </div>
 
             <div class="shop-item-name">
-              <%= shoe_data["name"] %>
+              <%= shoe.name %>
             </div>
 
             <div class="shop-item-description">
-              <%= shoe_data["description"] %>
+              <%= shoe.description %>
             </div>
 
             <div class="shop-item-bottom">
               <div class="shop-item-price">
-                $<%= shoe_data["price"] %>
+                $<%= shoe.price %>
               </div>
 
               <div class="shop-item-button">

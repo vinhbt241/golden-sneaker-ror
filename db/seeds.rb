@@ -1,7 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+shoes_data = JSON.parse(File.read('app/assets/data/shoes.json'))["shoes"]
+
+shoes_data.each do |shoe_data|
+  Shoe.create(
+    image: shoe_data["image"],
+    name: shoe_data["name"],
+    description: shoe_data["description"],
+    price: shoe_data["price"],
+    color: shoe_data["color"]
+  )
+end
