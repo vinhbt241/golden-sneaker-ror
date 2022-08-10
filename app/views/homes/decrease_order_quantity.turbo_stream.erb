@@ -16,7 +16,7 @@
 <% end %>
 
 <%= turbo_stream.replace "turbo-order-container" do %>
-    <div id="turbo-order-container">
+    <div class="card-body" id="turbo-order-container">
       <% if @orders.empty? %>
         <div class="cart-empty">
           <p class="cart-empty-text">
