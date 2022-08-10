@@ -1,0 +1,16 @@
+<%= turbo_stream.replace "order-quantity-#{@order.id}" do %>
+  <div 
+    class="cart-item-count-number" 
+    id="order-quantity-<%= @order.id %>">
+    <%= @order.quantity %>
+  </div>
+<% end %>
+
+<%= turbo_stream.replace "total-amount" do %>
+  <div class="card-title" id="total-amount">
+    Your Cart
+    <span class="card-title-amount">
+      <%= number_to_currency(@amount) %>
+    </span>
+  </div>
+<% end %>
