@@ -1,24 +1,13 @@
-# README
+# Golden Sneaker - Intern project assigned by Golden Own 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview 
+The application is a Shopping Cart UI. It's functions includes:
+- CRUD customer's orders.
+- Total price, info, and quantity of product was rendered instantly thanks to Turbo Stream.
+- Responsive design.
 
-Things you may want to cover:
+## Purpose 
+Created for the test of intern position at Golden Own.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Live Preview 
+You can check out the website [here]()
