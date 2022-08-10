@@ -16,56 +16,64 @@
 <% end %>
 
 <%= turbo_stream.replace "turbo-order-container" do %>
-  <div id="turbo-order-container">
-    <% if @orders.empty? %>
-      <div class="cart-empty">
-        <p class="cart-empty-text">
-          Your cart is empty
-        </p>
-      </div>
-    <% else %>
-      <div class="cart-items">
-        <% @orders.each do |order| %>
-          <div class="cart-item">
-            <div class="cart-item-left">
-              <div class="cart-item-image" style="background-color: <%= order.shoe.color %>;">
-                <div class="cart-item-image-block">
-                  <%= image_tag(order.shoe.image) %>
-                </div>
-              </div>
-            </div>
-            <div class="cart-item-right">
-              <div class="cart-item-name">
-                <%= order.shoe.name %>
-              </div>
-              <div class="cart-item-price">
-                $<%= order.shoe.price %>
-              </div>
-              <div class="cart-item-actions">
-                <div class="cart-item-count">
-                  <%= form_with url: "/decrease-order-quantity", method: :post do |form|%>
-                    <%= form.hidden_field :order_id, value: order.id %>
-                    <%= form.submit "-", class: "cart-item-count-button" %>
-                  <% end %>
-                  <div class="cart-item-count-number"><%= order.quantity %></div>
-                  <%= form_with url: "/increase-order-quantity", method: :post do |form|%>
-                    <%= form.hidden_field :order_id, value: order.id %>
-                    <%= form.submit "+", class: "cart-item-count-button" %>
-                  <% end %>
-                </div>
-                <%= form_with url: "/remove-order-from-cart", method: :delete do |form| %>
-                  <%= form.hidden_field :shoe_id, value: order.shoe.id  %>
-                  <div class="cart-item-remove">
-                    <%= image_submit_tag("trash.png", class: "cart-item-remove-icon") %>
+    <div id="turbo-order-container">
+      <% if @orders.empty? %>
+        <div class="cart-empty">
+          <p class="cart-empty-text">
+            Your cart is empty
+          </p>
+        </div>
+      <% else %>
+        <div class="cart-items">
+          <% @orders.each do |order| %>
+            <div class="cart-item">
+              <div class="cart-item-left">
+                <div class="cart-item-image" style="background-color: <%= order.shoe.color %>;">
+                  <div class="cart-item-image-block">
+                    <%= image_tag(order.shoe.image) %>
                   </div>
-                <% end %>
+                </div>
+              </div>
+              <div class="cart-item-right">
+                <div class="cart-item-name">
+                  <%= order.shoe.name %>
+                </div>
+                <div class="cart-item-price">
+                  $<%= order.shoe.price %>
+                </div>
+                <div class="cart-item-actions">
+                  <div class="cart-item-count">
+                    <%= form_with url: "/decrease-order-quantity", method: :post do |form|%>
+                      <%= form.hidden_field :order_id, value: order.id %>
+                      <%= form.submit "-", class: "cart-item-count-button" %>
+                    <% end %>
+
+                    <div 
+                      class="cart-item-count-number" 
+                      id="order-quantity-<%= order.id %>">
+                      <%= order.quantity %>
+                    </div>
+
+                    <%= form_with url: "/increase-order-quantity", method: :post do |form|%>
+                      <%= form.hidden_field :order_id, value: order.id %>
+                      <%= form.submit "+", class: "cart-item-count-button" %>
+                    <% end %>
+                  </div>
+
+                  <%= form_with url: "/remove-order-from-cart", method: :delete do |form| %>
+                    <%= form.hidden_field :shoe_id, value: order.shoe.id  %>
+                    <div class="cart-item-remove">
+                      <%= image_submit_tag("trash.png", class: "cart-item-remove-icon") %>
+                    </div>
+                  <% end %>
+                  
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
 <% end %>
 
 <%= turbo_stream.replace "turbo-button-item-#{@selected_shoe.id}" do %>

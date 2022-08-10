@@ -8,7 +8,7 @@
 <% end %>
 
 <%= turbo_stream.replace "turbo-order-container" do %>
-    <div id="turbo-order-container">
+  <div id="turbo-order-container">
     <% if @orders.empty? %>
       <div class="cart-empty">
         <p class="cart-empty-text">
@@ -39,18 +39,26 @@
                     <%= form.hidden_field :order_id, value: order.id %>
                     <%= form.submit "-", class: "cart-item-count-button" %>
                   <% end %>
-                  <div class="cart-item-count-number"><%= order.quantity %></div>
+
+                  <div 
+                    class="cart-item-count-number" 
+                    id="order-quantity-<%= order.id %>">
+                    <%= order.quantity %>
+                  </div>
+
                   <%= form_with url: "/increase-order-quantity", method: :post do |form|%>
                     <%= form.hidden_field :order_id, value: order.id %>
                     <%= form.submit "+", class: "cart-item-count-button" %>
                   <% end %>
                 </div>
+
                 <%= form_with url: "/remove-order-from-cart", method: :delete do |form| %>
                   <%= form.hidden_field :shoe_id, value: order.shoe.id  %>
                   <div class="cart-item-remove">
                     <%= image_submit_tag("trash.png", class: "cart-item-remove-icon") %>
                   </div>
                 <% end %>
+                
               </div>
             </div>
           </div>
