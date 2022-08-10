@@ -191,7 +191,10 @@ body {
  position:relative;
  display:flex;
  align-items:center;
- overflow:hidden
+ overflow:hidden;
+ border: none;
+ color: #303841;
+ font-family: Rubik,sans-serif;
 }
 .shop-item-button:hover {
  background-color:#f8d43f;
@@ -299,7 +302,10 @@ body {
  -webkit-user-select:none;
  -moz-user-select:none;
  -ms-user-select:none;
- user-select:none
+ user-select:none;
+ border: none;
+ color: #303841;
+ font-family: Rubik,sans-serif;
 }
 .cart-item-count-button:hover {
  background-color:#ddd
@@ -324,7 +330,7 @@ body {
  background-color:#f8d43f;
  box-shadow:-2px 2px 4px rgba(0,0,0,.15)
 }
-.cart-item-remove img {
+.cart-item-remove-icon {
  width:16px;
  height:16px
 }

@@ -9,3 +9,5 @@ shoes_data.each do |shoe_data|
     color: shoe_data["color"]
   )
 end
+
+Cart.create()
